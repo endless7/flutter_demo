@@ -29,15 +29,6 @@ class _MemoPageState extends State<MemoPage> {
         title: Text('Memo'),
       ),
       body: Center(
-        // child: ListView(
-        //   children: <Widget>[
-        //     ListTile(title: Text("普通ListView")),
-        //     ListTile(
-        //         title: Text("ListView.build"),
-        //         onTap: () {
-        //           Navigator.pushNamed(context, '/listview_build');
-        //         }),
-        //   ],
         child: ListView.custom(childrenDelegate: MemoListDelegate()),
         ),
       );

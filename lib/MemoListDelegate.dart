@@ -25,7 +25,7 @@ class MemoListDelegate extends SliverChildDelegate {
 
     }
 
-    return ListTile(title: Text("普通ListView"));
+    return MemoCard();
   }
 
   @override
