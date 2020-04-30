@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/MemoModel.dart';
 import "./MemoCard.dart";
 
 class MemoListDelegate extends SliverChildDelegate {
+
+  List<MemoModel> models = List<MemoModel>();
 
   MemoListDelegate() {
     // this.child
@@ -25,7 +28,6 @@ class MemoListDelegate extends SliverChildDelegate {
     return ListTile(title: Text("普通ListView"));
   }
 
-  /// 决定提供新的childDelegate时是否需要重新build。在调用此方法前会做类型检查，不同类型时才会调用此方法，所以一般返回true。
   @override
   bool shouldRebuild(SliverChildDelegate oldDelegate) {
     return true;
