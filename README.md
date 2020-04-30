@@ -1,3 +1,4 @@
 # TODO list
 
-A new Flutter project for endess7.
+- [x] 数据持久化
+- [ ] custom列表视图
