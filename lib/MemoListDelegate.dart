@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/MemoMgr.dart';
 import 'package:flutter_demo/MemoModel.dart';
 import "./MemoCard.dart";
 
 class MemoListDelegate extends SliverChildDelegate {
 
-  List<MemoModel> models = List<MemoModel>();
-
-  MemoListDelegate() {
-    // this.child
+  MemoListDelegate(State state) {
+    MemoMgr.getAllMemo().then((models) {
+      MemoMgr.shared.models = models;
+      state.setState((){});
+    });
   }
 
   /// 根据index构造child
   @override
   Widget build(BuildContext context, int index) {
-    // KeepAlive将把所有子控件加入到cache，已输入的TextField文字不会因滚动消失
-    // 仅用于演示
-    // return KeepAlive(
-        // keepAlive: true,
-        // child: TextField(decoration: InputDecoration(hintText: '请输入')));
+    int sum = MemoMgr.shared.models.length;
+
+    for (var i = 0; i < sum; i++) {
+      
+    }
 
     if (index == 0) {
       return ListSeperator("未完成");
@@ -25,12 +27,12 @@ class MemoListDelegate extends SliverChildDelegate {
       return ListSeperator("已完成");
     }
 
-    return MemoCard();
+    return MemoCard(MemoModel(1, "example", true, true));
   }
 
   @override
   bool shouldRebuild(SliverChildDelegate oldDelegate) {
-    return true;
+    return false;
   }
 
   /// 提高children的count，当无法精确知道时返回null。

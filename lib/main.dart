@@ -22,20 +22,35 @@ class MemoPage extends StatefulWidget {
 }
 
 class _MemoPageState extends State<MemoPage> {
+
+  ListView listView;
+
+  _MemoPageState() {
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    this.listView = ListView.custom(childrenDelegate: MemoListDelegate(this));
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Memo'),
       ),
       body: Center(
-        child: ListView.custom(childrenDelegate: MemoListDelegate()),
-        ),
-      );
+        child: this.listView,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+          print('FloatingActionButton');
+        },
+      )
+    );
   }
 }
 
-// MARK: -- example code --
+// MARK: -- example code -- //
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);

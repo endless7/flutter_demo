@@ -1,8 +1,13 @@
 import "package:flutter/material.dart";
+import 'package:flutter_demo/MemoModel.dart';
 
 class MemoCard extends StatelessWidget {
 
-  Text content = Text("example");
+  MemoModel _model;
+
+  MemoCard(MemoModel model) {
+    _model = model;
+  }
 
   RaisedButton rBtn = RaisedButton(
     color: Colors.blue,
@@ -42,7 +47,7 @@ class MemoCard extends StatelessWidget {
         children: <Widget>[
           Container(
             width: width-100-10,
-            child: content,
+            child: Text(_model.content),
           ),
           Container(
             width: 100,

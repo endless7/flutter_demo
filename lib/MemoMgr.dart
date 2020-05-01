@@ -6,6 +6,10 @@ const String Key = "memo_key";
 
 class MemoMgr {
 
+  static MemoMgr shared = MemoMgr();
+
+  List<MemoModel> models = List<MemoModel>();
+
   // ---  CRUD --- //
 
   static Future<List<MemoModel>> getAllMemo() async {
@@ -59,8 +63,3 @@ class MemoMgr {
     }
   }
 }
-
-class JsonHelper {
-
-}
-
