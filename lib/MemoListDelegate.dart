@@ -19,10 +19,10 @@ class MemoListDelegate extends SliverChildDelegate {
         // keepAlive: true,
         // child: TextField(decoration: InputDecoration(hintText: '请输入')));
 
-    if (index > 10) {
-      return null;
+    if (index == 0) {
+      return ListSeperator("未完成");
     }else if(index == 5) {
-
+      return ListSeperator("已完成");
     }
 
     return MemoCard();
