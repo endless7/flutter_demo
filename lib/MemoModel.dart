@@ -1,5 +1,5 @@
 class MemoModel {
-  int id;
+  String id;
   String content;
   bool isFinished;
   bool isDeleted;

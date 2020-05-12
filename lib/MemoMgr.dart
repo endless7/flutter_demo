@@ -1,4 +1,5 @@
 import 'dart:convert' as convert;
+import 'dart:ffi';
 import 'package:shared_preferences/shared_preferences.dart';
 import './MemoModel.dart';
 
@@ -9,6 +10,11 @@ class MemoMgr {
   static MemoMgr shared = MemoMgr();
 
   List<MemoModel> models = List<MemoModel>();
+
+  static Future<void> addMemo(MemoModel model) async {
+    MemoMgr.shared.models.add(model);
+    await syncMemo(MemoMgr.shared.models);
+  }
 
   // ---  CRUD --- //
 
@@ -28,7 +34,7 @@ class MemoMgr {
     return models; 
   } 
 
-  static void syncMemo(List<MemoModel> models) async {
+  static syncMemo(List<MemoModel> models) async {
 
     if (models.length == 0 || models == null) {
       return;

@@ -12,22 +12,34 @@ class MemoListDelegate extends SliverChildDelegate {
     });
   }
 
+  int aCount = 0;
   /// 根据index构造child
   @override
   Widget build(BuildContext context, int index) {
     int sum = MemoMgr.shared.models.length;
+
+    print("build list delegate");
 
     for (var i = 0; i < sum; i++) {
       
     }
 
     if (index == 0) {
+      aCount = 1;
       return ListSeperator("未完成");
-    }else if(index == 5) {
-      return ListSeperator("已完成");
+    }
+    else if (index >= sum - aCount) {
+      return null;
+    }
+    else {
+      return MemoCard(MemoMgr.shared.models[index - aCount]);
     }
 
-    return MemoCard(MemoModel(1, "example", true, true));
+    // else if(index == 5) {
+    //   return ListSeperator("已完成");
+    // }
+
+    // return MemoCard(MemoModel("test", "example", true, true));
   }
 
   @override
